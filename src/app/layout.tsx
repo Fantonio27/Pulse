@@ -22,9 +22,10 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Branded Toolbox",
-  description: "All your tools, beautifully organized",
+  title: "Pulse",
+  description: "Keeps your workflow alive and smooth",
 };
+
 
 export default function RootLayout({
   children,
