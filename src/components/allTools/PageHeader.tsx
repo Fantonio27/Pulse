@@ -2,7 +2,11 @@
 
 import { Plus } from "lucide-react";
 
-export default function PageHeader() {
+interface PageHeaderProps {
+  onAddToolClick?: () => void;
+}
+
+export default function PageHeader({ onAddToolClick }: PageHeaderProps) {
   return (
     <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
       <div className="flex flex-col gap-0.5">
@@ -16,10 +20,14 @@ export default function PageHeader() {
           Organized access to your favorite digital resources.
         </p>
       </div>
-      <button className="flex items-center justify-center gap-1 bg-[#2563EB] text-sm text-white font-semibold px-5 py-3 rounded-full hover:bg-[#1D4ED8] hover:shadow-lg hover:shadow-[#2563EB]/30 transition-all active:scale-95 cursor-pointer">
+      <button
+        onClick={onAddToolClick}
+        className="flex items-center justify-center gap-1 bg-[#2563EB] text-sm text-white font-semibold px-5 py-3 rounded-full hover:bg-[#1D4ED8] hover:shadow-lg hover:shadow-[#2563EB]/30 transition-all active:scale-95 cursor-pointer"
+      >
         <Plus className="size-5" />
         <span>Add New Tool</span>
       </button>
     </div>
   );
 }
+
