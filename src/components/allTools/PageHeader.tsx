@@ -16,7 +16,7 @@ export default function PageHeader() {
           Organized access to your favorite digital resources.
         </p>
       </div>
-      <button className="flex items-center justify-center gap-1 bg-[#2563EB] text-sm text-white font-semibold px-5 py-3 rounded-full hover:bg-[#1D4ED8] hover:shadow-lg hover:shadow-[#2563EB]/30 transition-all active:scale-95">
+      <button className="flex items-center justify-center gap-1 bg-[#2563EB] text-sm text-white font-semibold px-5 py-3 rounded-full hover:bg-[#1D4ED8] hover:shadow-lg hover:shadow-[#2563EB]/30 transition-all active:scale-95 cursor-pointer">
         <Plus className="size-5" />
         <span>Add New Tool</span>
       </button>
