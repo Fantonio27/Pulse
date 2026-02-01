@@ -5,3 +5,4 @@ export { default as CategoryFilters } from "./CategoryFilters";
 export { default as ToolListItem } from "./ToolListItem";
 export { default as ToolGridItem } from "./ToolGridItem";
 export { default as ThemeToggle } from "./ThemeToggle";
+export { default as AddToolModal } from "./dialog/AddToolModal";
