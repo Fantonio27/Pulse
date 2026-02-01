@@ -9,7 +9,7 @@ import {
   ToolListItem,
   ToolGridItem,
   ThemeToggle,
-} from "./components";
+} from "@/components/allTools";
 import { toolsData, categories, categoryColors } from "@/constants/allTools";
 
 export default function AllToolsPage() {
