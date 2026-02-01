@@ -9,8 +9,17 @@ import {
   ToolListItem,
   ToolGridItem,
   ThemeToggle,
+  AddToolModal,
 } from "@/components/allTools";
 import { toolsData, categories, categoryColors } from "@/constants/allTools";
+
+const categoryColorMap: Record<string, string> = {
+  Design: "purple",
+  Productivity: "blue",
+  Development: "slate",
+  Marketing: "emerald",
+  Writing: "orange",
+};
 
 export default function AllToolsPage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -18,6 +27,7 @@ export default function AllToolsPage() {
   const [viewMode, setViewMode] = useState<"list" | "grid">("list");
   const [tools, setTools] = useState(toolsData);
   const [isDark, setIsDark] = useState(false);
+  const [isAddToolModalOpen, setIsAddToolModalOpen] = useState(false);
 
   const filteredTools = tools.filter((tool) => {
     const matchesSearch =
@@ -37,12 +47,34 @@ export default function AllToolsPage() {
     document.documentElement.classList.toggle("dark");
   };
 
+  const handleAddTool = (toolData: {
+    name: string;
+    description: string;
+    category: string;
+    tags: string[];
+    iconUrl: string;
+    url: string;
+  }) => {
+    const newTool = {
+      id: Math.max(...tools.map((t) => t.id)) + 1,
+      name: toolData.name,
+      description: toolData.description,
+      category: toolData.category,
+      categoryColor: categoryColorMap[toolData.category] || "slate",
+      tags: toolData.tags,
+      iconUrl: toolData.iconUrl,
+      starred: false,
+      url: toolData.url,
+    };
+    setTools([newTool, ...tools]);
+  };
+
   return (
     <div className={`min-h-screen bg-gray-50 dark:bg-[#101322] transition-colors duration-300`}>
       <Header />
 
       <main className="max-w-[1200px] mx-auto px-6 py-10">
-        <PageHeader />
+        <PageHeader onAddToolClick={() => setIsAddToolModalOpen(true)} />
 
         <Toolbar
           searchQuery={searchQuery}
@@ -92,6 +124,14 @@ export default function AllToolsPage() {
       </main>
 
       <ThemeToggle isDark={isDark} onToggle={toggleDarkMode} />
+
+      {/* Add Tool Modal */}
+      <AddToolModal
+        isOpen={isAddToolModalOpen}
+        onClose={() => setIsAddToolModalOpen(false)}
+        onAddTool={handleAddTool}
+      />
     </div>
   );
 }
+
