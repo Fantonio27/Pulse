@@ -17,9 +17,9 @@ export default function CategoryFilters({
         <button
           key={category}
           onClick={() => onCategoryChange(category)}
-          className={`px-5 py-2 rounded-full font-semibold text-sm transition-all whitespace-nowrap ${
+          className={`px-5 py-2 rounded-full font-semibold text-sm transition-all whitespace-nowrap cursor-pointer ${
             activeCategory === category
-              ? "bg-[#2563EB] text-white shadow-md shadow-[#2563EB]/20"
+              ? "bg-[#2563EB] text-white shadow-md shadow-[#2563EB]/20 border border-[#1756dd]"
               : "bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-400 border border-gray-100 dark:border-gray-800 hover:border-[#2563EB]"
           }`}
         >
